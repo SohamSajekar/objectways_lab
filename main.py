@@ -1,6 +1,7 @@
+import os
 import uvicorn
 from fastapi import FastAPI
-from utils.util import read_convert_to_jsonl, count_entities, save_csv
+from objectways_lab.utils.util import read_convert_to_jsonl, count_entities, save_csv
 
 
 app = FastAPI()
@@ -25,7 +26,8 @@ def function_transform_json_to_csv(file_path: str):
         entity_types.append(etypes)
         entity_count.append(count)
     saved_path, _ = save_csv(filenames, entity_types, entity_count)
-    return {"Saved path to csv": file_path, "output": saved_path}
+    saved_path = os.getcwd() + '/' + saved_path
+    return {"Saved path to csv": saved_path}
 
 if __name__ == '__main__':
     uvicorn.run(app, port=8000)
