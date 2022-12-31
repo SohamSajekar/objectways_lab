@@ -1,5 +1,5 @@
 import requests
-from ..utils.util import read_convert_to_jsonl
+from utils.util import read_convert_to_jsonl
 
 
 def send_request(json_file_path, url, service='transform_json_to_csv'):
@@ -27,8 +27,8 @@ def main():
     print("Service 1 - get_entities")
     send_request(json_file_path, service1_url, service='get_entities')
     print()
-    print("Service 2 - get_entities")
-    send_request(json_file_path, service1_url)
+    print("Service 2 - transform_json_to_cv")
+    send_request(json_file_path, service2_url, service='transform_json_to_csv')
 
 
 if __name__ == '__main__':
