@@ -18,12 +18,14 @@ def send_request(json_file_path, url, service='transform_json_to_csv'):
             print(service1_res.json())
 
 def main():
+
     # Json file path location
     json_file_path = 'resume_labels.json'
     # URL for service 1: get_entities
     service1_url = 'http://localhost:8000/get_entities'
     # URL for service 2: transform json to csv
     service2_url = 'http://localhost:8000/transform_json_to_csv'
+    # Send requests and print output
     print("Service 1 - get_entities")
     send_request(json_file_path, service1_url, service='get_entities')
     print()
