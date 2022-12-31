@@ -1,5 +1,5 @@
 import requests
-from utils.util import read_convert_to_jsonl
+from objectways_lab.utils.util import read_convert_to_jsonl
 
 
 def send_request(json_file_path, url, service='transform_json_to_csv'):
