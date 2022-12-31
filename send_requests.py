@@ -1,12 +1,12 @@
 import requests
-from objectways_lab.utils.util import read_convert_to_jsonl
+from utils.util import read_convert_to_jsonl
 
 
 def send_request(json_file_path, url, service='transform_json_to_csv'):
 
     if service == 'transform_json_to_csv':
         # Send GET request to FastAPI
-        service2_res = requests.get(url + '/' + json_file_path)
+        service2_res = requests.post(url + '/' + json_file_path)
         # result
         print(service2_res.json())
     else:
@@ -14,7 +14,7 @@ def send_request(json_file_path, url, service='transform_json_to_csv'):
         data = read_convert_to_jsonl(json_file_path)
         # Send GET request to FastAPI for each json line
         for payload in data:
-            service1_res = requests.get(url, json=payload)
+            service1_res = requests.post(url, json=payload)
             print(service1_res.json())
 
 def main():
