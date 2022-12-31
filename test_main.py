@@ -19,6 +19,6 @@ def test_get_entities():
 # Test Service-2
 def test_transform_json_to_csv():
     # Send request through client
-    response = client.post("/transform_json_to_csv/resume_labels.json")
+    response = client.get("/transform_json_to_csv/resume_labels.json")
     # Check for successful request execution
     assert response.status_code == 200

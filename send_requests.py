@@ -6,7 +6,7 @@ def send_request(json_file_path, url, service='transform_json_to_csv'):
 
     if service == 'transform_json_to_csv':
         # Send GET request to FastAPI
-        service2_res = requests.post(url + '/' + json_file_path)
+        service2_res = requests.get(url + '/' + json_file_path)
         # result
         print(service2_res.json())
     else:

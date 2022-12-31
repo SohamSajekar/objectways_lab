@@ -21,7 +21,7 @@ def function_get_entities(data: dict):
     return final
 
 # Service-2: /transform_json_to_csv, requests json file path and generates csv data, returning csv save path
-@app.post("/transform_json_to_csv/{file_path}")
+@app.get("/transform_json_to_csv/{file_path}")
 def function_transform_json_to_csv(file_path: str):
 
     # Load and convert json to jsonl
