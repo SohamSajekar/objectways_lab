@@ -1,5 +1,4 @@
 import json
-import os
 import pandas as pd
 
 
@@ -7,13 +6,11 @@ def read_convert_to_jsonl(path):
     data = []
     with open(path, 'r') as f:
         json_data = json.load(f)
-
-    with open('converted.jsonl', 'w') as outfile:
+    with open('results/converted.jsonl', 'w') as outfile:
         for entry in json_data:
             json.dump(entry, outfile)
             outfile.write('\n')
-
-    with open("converted.jsonl") as f1:
+    with open("results/converted.jsonl") as f1:
         for line in f1:
             json_line = json.loads(line)
             data.append(json_line)
@@ -41,7 +38,7 @@ def flatten(list):
     return [item for sublist in list for item in sublist]
 
 def save_csv(filenames, entity_types, entity_count):
-    savepath = os.getcwd() + '/resume_labels.csv'
+    savepath = 'results/resume_labels.csv'
     col1, col2, col3 = flatten(filenames), flatten(entity_types), flatten(entity_count)
     df = pd.DataFrame({'File Name': col1, 'Entity Type': col2, 'Count of Entities': col3})
     df.to_csv(savepath, index=False)
